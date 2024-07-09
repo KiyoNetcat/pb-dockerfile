@@ -39,5 +39,5 @@ jobs:
           git config --global user.name ${{ secrets.GIT_NAME }}
           git config --global user.email ${{ secrets.GIT_EMAIL }}
           git add -A
-          git commit -m '[auto] Update Pocketbase from ${{ env.OLD_VER }} to ${{ env.NEW_VER }}'
+          git commit -m '[auto] Update Pocketbase from ${{ env.OLD_VER }} to ${{ env.NEW_VER }}' -m 'https://github.com/pocketbase/pocketbase/releases/tag/v${{ env.NEW_VER }}'
           git push
