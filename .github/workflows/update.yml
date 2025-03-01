@@ -29,7 +29,9 @@ jobs:
       - name: Get Versions
         run: |
           echo "OLD_VER=$(grep -oP 'PB_VERSION=+\K.+' Dockerfile)" >> $GITHUB_ENV
+          [ -z $OLD_VER ] && echo "Could not acquire old version!" && exit 1
           echo "NEW_VER=$(curl 'https://api.github.com/repos/pocketbase/pocketbase/tags' | jq -r '.[0].name' | grep -oP 'v+\K.+')" >> $GITHUB_ENV
+          [ -z $NEW_VER ] && echo "Could not acquire new version!" && exit 1
 
       # Runs a set of commands using the runners shell
       - name: Update Pocketbase
